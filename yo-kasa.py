@@ -15,11 +15,8 @@ def kasairu(api_token):
         'http://weather.livedoor.com/forecast/webservice/json/v1?city=%s'
             % location_id).json()
 
-    print weather_data
-    
     if any(x in weather_data['forecasts'][0]['telop'] for x in [u'雨', u'雪']):
         print "You definitely need one today!"
-        print api_token
         yo_all(api_token)
     else:
         print "you don't need one today"
