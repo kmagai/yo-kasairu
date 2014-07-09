@@ -1,1 +1,1 @@
-web: python yo-kasa.py -i json-rpc
+clock: python clock.py

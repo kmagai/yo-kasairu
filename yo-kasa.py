@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import requests
 import os
+from apscheduler.scheduler import Scheduler
+
+sched = Scheduler()
 
 def yo_all(api_token):
     requests.post("http://api.justyo.co/yoall/", data={'api_token': api_token})
@@ -23,5 +26,12 @@ def kasairu(api_token):
 
 
 kasairu_token = os.environ.get('kasairu_token')
-print kasairu_token
-kasairu(kasairu_token)
+
+@sched.cron_schedule(hour=7)
+def scheduled_job():
+    kasairu(kasairu_token)
+
+sched.start()
+
+while True:
+    pass
