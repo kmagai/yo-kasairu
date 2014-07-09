@@ -27,7 +27,7 @@ def kasairu(api_token):
 
 kasairu_token = os.environ.get('kasairu_token')
 
-@sched.cron_schedule(hour=7)
+@sched.cron_schedule(hour=11)
 def scheduled_job():
     kasairu(kasairu_token)
 
